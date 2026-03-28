@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { skillCategories } from "@/lib/data";
-import { Brain, Smartphone, Layers, Accessibility, Code, Settings, ChevronDown } from "lucide-react";
+import { Brain, Smartphone, Layers, Accessibility, Code, Settings, ChevronDown, Sparkles, Eye } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   brain: Brain,
@@ -15,6 +15,8 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   accessibility: Accessibility,
   code: Code,
   settings: Settings,
+  sparkles: Sparkles,
+  eye: Eye,
 };
 
 const priorityStyles = {
@@ -29,7 +31,7 @@ export function SkillsSection() {
   const [expanded, setExpanded] = useState<string | null>(skillCategories[0].title);
 
   return (
-    <section id="skills" className="py-20 bg-white relative overflow-hidden">
+    <section id="skills" className="py-20 bg-white dark:bg-slate-950 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.06] bg-center bg-no-repeat bg-cover pointer-events-none"
         style={{ backgroundImage: `url(${SKILLS_BG})` }}
@@ -38,9 +40,9 @@ export function SkillsSection() {
       <div className="container relative z-10">
         <div className="max-w-xl mb-12">
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-teal mb-2">Competencies</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Skills to Develop</h2>
-          <p className="text-slate-500 leading-relaxed">
-            Six skill domains ordered by priority. Focus on critical areas first for maximum career impact.
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">Skills to Develop</h2>
+          <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+            Eight skill domains ordered by priority. Focus on critical areas first for maximum career impact.
           </p>
         </div>
 
@@ -54,7 +56,7 @@ export function SkillsSection() {
               <motion.div
                 key={cat.title}
                 layout
-                className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-slate-300 transition-colors"
+                className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
               >
                 <button
                   onClick={() => setExpanded(isOpen ? null : cat.title)}
@@ -65,12 +67,12 @@ export function SkillsSection() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <h3 className="font-semibold text-slate-900 text-sm truncate">{cat.title}</h3>
+                      <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm truncate">{cat.title}</h3>
                       <span className={`font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border ${priority.bg} ${priority.text} ${priority.border}`}>
                         {priority.label}
                       </span>
                     </div>
-                    <p className="font-mono text-xs text-slate-400">{cat.skills.length} skills</p>
+                    <p className="font-mono text-xs text-slate-400 dark:text-slate-500">{cat.skills.length} skills</p>
                   </div>
                   <ChevronDown
                     size={18}
@@ -88,14 +90,14 @@ export function SkillsSection() {
                       className="overflow-hidden"
                     >
                       <div className="px-5 pb-5 pt-0">
-                        <div className="border-t border-slate-100 pt-4 space-y-2">
+                        <div className="border-t border-slate-100 dark:border-slate-700 pt-4 space-y-2">
                           {cat.skills.map((skill, j) => (
                             <div
                               key={j}
                               className="flex items-start gap-2.5 py-1.5"
                             >
                               <div className="w-1.5 h-1.5 rounded-full bg-teal/40 mt-1.5 shrink-0" />
-                              <span className="text-sm text-slate-600 leading-relaxed">{skill}</span>
+                              <span className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{skill}</span>
                             </div>
                           ))}
                         </div>

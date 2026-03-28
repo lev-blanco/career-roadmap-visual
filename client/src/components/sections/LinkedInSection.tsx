@@ -1,35 +1,36 @@
 /**
  * LinkedInSection — LinkedIn strategy with headline preview and rules
  * Mission Control: clean info cards with monospace accents
+ * Dark mode compatible
  */
 
 import { motion } from "framer-motion";
 import { linkedinStrategy } from "@/lib/data";
-import { Linkedin, AlertCircle, MessageSquare, Clock, Eye } from "lucide-react";
+import { Linkedin, AlertCircle, MessageSquare, Clock } from "lucide-react";
 
 export function LinkedInSection() {
   return (
-    <section id="linkedin" className="py-20 bg-white">
+    <section id="linkedin" className="py-20 bg-white dark:bg-slate-950">
       <div className="container">
         <div className="max-w-xl mb-12">
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-teal mb-2">Visibility</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">LinkedIn Strategy</h2>
-          <p className="text-slate-500 leading-relaxed">
-            Profile engineering for algorithmic discovery. Only the first 40–50 characters show in search snippets — front-load keywords.
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-3">LinkedIn Strategy</h2>
+          <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
+            Profile engineering for algorithmic discovery. Only the first 40-50 characters show in search snippets — front-load keywords.
           </p>
         </div>
 
         {/* Headline preview */}
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8">
-          <p className="font-mono text-xs tracking-wider uppercase text-slate-400 mb-3">Optimized Headline</p>
-          <div className="bg-white border border-slate-200 rounded-lg p-4">
+        <div className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 mb-8">
+          <p className="font-mono text-xs tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-3">Optimized Headline</p>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-4">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center">
                 <Linkedin size={18} className="text-teal" />
               </div>
               <div>
-                <p className="font-semibold text-sm text-slate-900">Your Name</p>
-                <p className="text-xs text-slate-500 leading-relaxed max-w-lg">{linkedinStrategy.headline}</p>
+                <p className="font-semibold text-sm text-slate-900 dark:text-slate-100">Your Name</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg">{linkedinStrategy.headline}</p>
               </div>
             </div>
           </div>
@@ -42,9 +43,9 @@ export function LinkedInSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="bg-white border border-slate-200 rounded-xl p-5"
+            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5"
           >
-            <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
               <MessageSquare size={16} className="text-teal" />
               About Section — "Pain-First" Framework
             </h3>
@@ -55,8 +56,8 @@ export function LinkedInSection() {
                     <span className="font-mono text-xs font-bold text-teal">{i + 1}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-slate-900">{item.step}</p>
-                    <p className="text-xs text-slate-500">{item.desc}</p>
+                    <p className="text-sm font-medium text-slate-900 dark:text-slate-100">{item.step}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -69,9 +70,9 @@ export function LinkedInSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="bg-white border border-slate-200 rounded-xl p-5"
+            className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5"
           >
-            <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
               <AlertCircle size={16} className="text-amber" />
               Algorithm & Engagement Rules
             </h3>
@@ -79,24 +80,24 @@ export function LinkedInSection() {
               {linkedinStrategy.keyRules.map((rule, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-amber/60 mt-2 shrink-0" />
-                  <span className="text-sm text-slate-600 leading-relaxed">{rule}</span>
+                  <span className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{rule}</span>
                 </div>
               ))}
             </div>
 
-            <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border border-slate-100 dark:border-slate-700">
               <div className="flex items-center gap-2 mb-2">
-                <Clock size={14} className="text-slate-400" />
-                <span className="font-mono text-xs text-slate-500">Posting Cadence</span>
+                <Clock size={14} className="text-slate-400 dark:text-slate-500" />
+                <span className="font-mono text-xs text-slate-500 dark:text-slate-400">Posting Cadence</span>
               </div>
-              <p className="text-sm font-medium text-slate-700">{linkedinStrategy.postingCadence}</p>
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{linkedinStrategy.postingCadence}</p>
             </div>
           </motion.div>
         </div>
 
         {/* Top Skills */}
         <div className="mt-6 flex items-center gap-3">
-          <span className="font-mono text-xs text-slate-400 uppercase tracking-wider">Pin Top 3:</span>
+          <span className="font-mono text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Pin Top 3:</span>
           {linkedinStrategy.topSkills.map((skill) => (
             <span
               key={skill}

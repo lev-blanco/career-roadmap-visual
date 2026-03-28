@@ -1,6 +1,7 @@
 /**
- * SideNav — Fixed left navigation rail
+ * SideNav — Fixed left navigation rail with theme toggle
  * Mission Control: minimal icon-based nav with teal active state
+ * Dark mode compatible
  */
 
 import { useState, useEffect } from "react";
@@ -16,8 +17,13 @@ import {
   PenTool,
   CheckSquare,
   Cpu,
+  GraduationCap,
+  DollarSign,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const sections = [
   { id: "hero", icon: Rocket, label: "Overview" },
@@ -25,6 +31,8 @@ const sections = [
   { id: "timeline", icon: Clock, label: "Timeline" },
   { id: "skills", icon: Brain, label: "Skills" },
   { id: "certifications", icon: Award, label: "Certifications" },
+  { id: "courses", icon: GraduationCap, label: "Courses" },
+  { id: "pricing", icon: DollarSign, label: "Pricing" },
   { id: "portfolio", icon: FolderOpen, label: "Portfolio" },
   { id: "strategy", icon: Target, label: "Strategy" },
   { id: "linkedin", icon: Linkedin, label: "LinkedIn" },
@@ -35,13 +43,13 @@ const sections = [
 
 export function SideNav() {
   const [active, setActive] = useState("hero");
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((e) => e.isIntersecting);
         if (visible.length > 0) {
-          // Pick the one closest to the top
           const top = visible.reduce((a, b) =>
             a.boundingClientRect.top < b.boundingClientRect.top ? a : b
           );
@@ -65,21 +73,21 @@ export function SideNav() {
   };
 
   return (
-    <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-16 flex-col items-center justify-center gap-1 z-50 bg-white/80 backdrop-blur-sm border-r border-slate-200">
+    <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-16 flex-col items-center justify-center gap-0.5 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-r border-slate-200 dark:border-slate-700">
       {sections.map(({ id, icon: Icon, label }) => (
         <Tooltip key={id} delayDuration={0}>
           <TooltipTrigger asChild>
             <button
               onClick={() => scrollTo(id)}
               className={`
-                w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200
+                w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200
                 ${active === id
                   ? "bg-teal/10 text-teal"
-                  : "text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                  : "text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                 }
               `}
             >
-              <Icon size={18} strokeWidth={active === id ? 2.5 : 1.5} />
+              <Icon size={16} strokeWidth={active === id ? 2.5 : 1.5} />
             </button>
           </TooltipTrigger>
           <TooltipContent side="right" className="font-mono text-xs">
@@ -87,6 +95,24 @@ export function SideNav() {
           </TooltipContent>
         </Tooltip>
       ))}
+
+      {/* Separator */}
+      <div className="w-6 h-px bg-slate-200 dark:bg-slate-700 my-1" />
+
+      {/* Theme toggle */}
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild>
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
+        </TooltipTrigger>
+        <TooltipContent side="right" className="font-mono text-xs">
+          {theme === "light" ? "Dark Mode" : "Light Mode"}
+        </TooltipContent>
+      </Tooltip>
     </nav>
   );
 }
