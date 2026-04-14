@@ -6,7 +6,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { skillCategories } from "@/lib/data";
-import { Brain, Smartphone, Layers, Accessibility, Code, Settings, ChevronDown, Sparkles, Eye } from "lucide-react";
+import { Brain, Smartphone, Layers, Accessibility, Code, Settings, ChevronDown, Sparkles, Eye, Shield } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   brain: Brain,
@@ -17,6 +17,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   settings: Settings,
   sparkles: Sparkles,
   eye: Eye,
+  shield: Shield
 };
 
 const priorityStyles = {
