@@ -7,13 +7,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { certifications } from "@/lib/data";
-import { Lock, Loader2, CheckCircle2, DollarSign, Clock, TrendingUp, ShieldCheck, BookOpen, Gauge } from "lucide-react";
+import { Lock, Loader2, CheckCircle2, DollarSign, Clock, TrendingUp, ShieldCheck, BookOpen, Gauge, Server, Cloud, Shield } from "lucide-react";
 
 const statusConfig = {
   locked: { icon: Lock, label: "Locked", color: "text-slate-400 dark:text-slate-500", bg: "bg-slate-100 dark:bg-slate-800", border: "border-slate-200 dark:border-slate-700" },
   "in-progress": { icon: Loader2, label: "In Progress", color: "text-teal dark:text-teal-light", bg: "bg-teal/10", border: "border-teal/30" },
   earned: { icon: CheckCircle2, label: "Earned", color: "text-emerald dark:text-emerald-light", bg: "bg-emerald/10", border: "border-emerald/30" },
   mandatory: { icon: ShieldCheck, label: "Mandatory", color: "text-amber dark:text-amber-light", bg: "bg-amber/10", border: "border-amber/30" },
+  isc2: { icon: Shield, color: "text-red-600", bg: "bg-red-50", border: "border-red-200" },
+  google: { icon: Cloud, color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-200" },
+  ibm: { icon: Server, color: "text-indigo-600", bg: "bg-indigo-50", border: "border-indigo-200" },
 };
 
 const effortStyles = {
