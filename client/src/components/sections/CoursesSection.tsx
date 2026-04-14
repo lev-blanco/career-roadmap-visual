@@ -15,6 +15,7 @@ const categoryConfig = {
   mobile: { icon: Smartphone, label: "Mobile", color: "text-teal dark:text-teal-light", bg: "bg-teal/10" },
   accessibility: { icon: Accessibility, label: "Accessibility", color: "text-amber dark:text-amber-light", bg: "bg-amber/10" },
   fullstack: { icon: Code, label: "Full-Stack", color: "text-slate-600 dark:text-slate-300", bg: "bg-slate-100 dark:bg-slate-700" },
+  security: { icon: Shield, label: "Security", color: "text-red-600", bg: "bg-red-50" }
 };
 
 const priorityStyles = {
