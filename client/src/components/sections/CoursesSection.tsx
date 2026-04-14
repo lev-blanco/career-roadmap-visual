@@ -7,7 +7,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { courses } from "@/lib/data";
-import { BookOpen, Clock, Gauge, DollarSign, Brain, Server, Smartphone, Accessibility, Code } from "lucide-react";
+import { BookOpen, Clock, Gauge, DollarSign, Brain, Server, Smartphone, Accessibility, Code, Shield } from "lucide-react";
 
 const categoryConfig = {
   ai: { icon: Brain, label: "AI", color: "text-purple-600 dark:text-purple-400", bg: "bg-purple-50 dark:bg-purple-900/30" },
